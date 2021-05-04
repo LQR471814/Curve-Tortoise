@@ -6,7 +6,7 @@ This isn't a python package! It's just me having some fun, that's all.
 
 ### Usage
 
-#### Calculating Bezier Interpolation
+#### `Calculating Bezier Interpolation`
 
 Usually people think of Bezier curves as points that you can drag around and in doing so manipulate a curve.
 
@@ -41,7 +41,7 @@ import bezier
 bezier.bezier_interpolation(bezier_curve, steps=20)
 ```
 
-#### Drawing points
+#### `Drawing points`
 
 This calculates the curve and draws it with turtle, you have to pass a turtle object to the `draw` function and give it a `scale` (you can give it `steps` too)
 
