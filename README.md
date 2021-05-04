@@ -2,6 +2,8 @@
 
 Draw Bezier Curves with Python turtle and interpolate points with curves! *This isn't a python package! It's just me having some fun, that's all.*
 
+![demo img](https://github.com/LQR471814/curve-tortoise/blob/main/demo.gif?raw=true)
+
 ### Usage
 
 #### `Calculating Bezier Interpolation`
@@ -58,3 +60,5 @@ renderer.draw(tortoise, 400, [
     Line(B, C)
 ])
 ```
+
+For a full working demo, check out [demos.py](https://github.com/LQR471814/curve-tortoise/blob/main/demos.py)!
