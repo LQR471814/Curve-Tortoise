@@ -39,6 +39,21 @@ import bezier
 bezier.bezier_interpolation(bezier_curve, steps=20)
 ```
 
+Closed curves work as well!
+
+```python
+bezier.bezier_interpolation(bezier_curve, steps=20, closed=True)
+```
+or
+```python
+renderer.draw(tortoise, scale=400, bezier_points=[
+    Line(A, B),
+    Line(B, C)
+], closed=True)
+```
+
+<br>
+
 <img alt="demo img" src="https://github.com/LQR471814/curve-tortoise/blob/main/demo.gif?s=108" height="283" width="324"></img>
 
 #### `Drawing points`
