@@ -9,6 +9,8 @@ class Point:
     def __str__(self):
         return f'P({self.x}, {self.y})'
 
+    def offset(self, x, y):
+        return Point(self.x + x, self.y + y)
 
 class Line:
     def __init__(self, p1: Point, p2: Point):

@@ -1,5 +1,4 @@
 import threading
-import time
 import turtle
 
 import bezier
@@ -9,7 +8,7 @@ from common.types import *
 A = Point(0.1, 0.1)
 B = Point(0.3, 0.5)
 C = Point(0.7085, 0.376)
-D = Point(0.7465, 0.69)
+D = Point(0.811, 0.084)
 
 test_bezier_points = [
     Line(A, B),
@@ -49,10 +48,26 @@ def demo_renderer():
     tortoise.pensize(2)
 
     # ? Run both at the same time
-    threading.Thread(target=draw_original_lines, args=(
-        line_renderer, scale), daemon=True).start()
-    threading.Thread(target=renderer.draw, args=(
-        tortoise, scale, test_bezier_points, 20), daemon=True).start()
+    threading.Thread(
+        target=draw_original_lines,
+        args=(
+            line_renderer,
+            scale
+        ), daemon=True
+    ).start()
+
+    threading.Thread(
+        target=renderer.draw,
+        args=(
+            tortoise,
+            scale,
+            test_bezier_points,
+            40
+        ),
+        kwargs={
+            'closed': True
+        }, daemon=True
+    ).start()
 
     # ? Wait for window close
     turtle.done()
@@ -60,11 +75,10 @@ def demo_renderer():
 
 def demo_bezier():
     print(" ============= Bezier Points ============= ")
-    for point in bezier.bezier_interpolation(test_bezier_points, 20):
+    for point in bezier.bezier_interpolation(test_bezier_points, 20, closed=True):
         print(point)
 
 
 if __name__ == '__main__':
     demo_bezier()
-    time.sleep(2)
     demo_renderer()

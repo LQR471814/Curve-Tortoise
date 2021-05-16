@@ -14,12 +14,12 @@ from common.types import *
 # ? 12. Return list of points
 
 
-def bezier_interpolation(point_lines: List[Line], steps: int) -> List[Point]:
+def bezier_interpolation(point_lines: List[Line], steps: int, closed: bool = False) -> List[Point]:
     def find_point_recursive(lines: List[Line]) -> Point:
         new_lines: List[Line] = []
 
         for i in range(len(lines)):
-            if i - 1 < 0:
+            if i == 0:
                 continue
 
             last_point = lines[i - 1].point_from_line_proportion(t)
@@ -27,19 +27,19 @@ def bezier_interpolation(point_lines: List[Line], steps: int) -> List[Point]:
 
             new_lines.append(Line(last_point, current_point))
 
-        # print(' | '.join([str(line) for line in new_lines])) #? Debug
-
         if len(new_lines) == 1:
             return new_lines[0].point_from_line_proportion(t)
 
         return find_point_recursive(new_lines)
+
+    if closed:
+        point_lines.append(Line(point_lines[-1].p2.offset(0.001, 0), point_lines[0].p1.offset(0.001, 0)))
 
     step_size = 1/steps
     t = step_size
 
     result_points: List[Point] = []
     for i in range(steps):
-        # print('----------------------------') #? Debug
         result_points.append(find_point_recursive(point_lines))
         t += step_size
 
