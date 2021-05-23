@@ -1,4 +1,4 @@
-# curve-tortoise
+# Curve-Tortoise
 
 Draw Bezier Curves with Python turtle and interpolate points with curves! *This isn't a python package! It's just me having some fun, that's all.*
 
